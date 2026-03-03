@@ -51,9 +51,16 @@ const ContactPage = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const rawBody = await response.text();
+      let data = {};
+      try {
+        data = rawBody ? JSON.parse(rawBody) : {};
+      } catch {
+        data = { error: rawBody || `Request failed with status ${response.status}` };
+      }
+
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send email');
+        throw new Error(data.error || `Failed to send email (${response.status})`);
       }
 
       // Show success message

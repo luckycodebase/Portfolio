@@ -1,50 +1,35 @@
 /* globals process */
-export default async function handler(event) {
-  console.log('=== FUNCTION START ===');
-  console.log('HTTP Method:', event.httpMethod);
-  console.log('RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY);
-  
-  // Handle OPTIONS requests
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: 'OK'
-    };
-  }
+import { Resend } from 'resend';
 
-  // Only allow POST
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
-  }
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Content-Type': 'application/json'
+};
 
+export const handler = async (event) => {
   try {
-    // Import Resend
-    const { Resend } = await import('resend');
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    console.log('Resend initialized');
-    console.log('Parsing body:', event.body);
-    const { name, email, message } = JSON.parse(event.body);
-
-    // Validate input
-    if (!name || !email || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Missing required fields' })
-      };
+    if (event.httpMethod === 'OPTIONS') {
+      return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ ok: true }) };
     }
 
-    console.log('Sending email to luckykumar9295@gmail.com from', email);
-    
-    // Send email via Resend
+    if (event.httpMethod !== 'POST') {
+      return { statusCode: 405, headers: corsHeaders, body: JSON.stringify({ error: 'Method not allowed' }) };
+    }
+
+    if (!process.env.RESEND_API_KEY) {
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'RESEND_API_KEY is missing in Netlify env' }) };
+    }
+
+    const parsedBody = JSON.parse(event.body || '{}');
+    const { name, email, message } = parsedBody;
+
+    if (!name || !email || !message) {
+      return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'Missing required fields' }) };
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const result = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: 'luckykumar9295@gmail.com',
@@ -59,23 +44,16 @@ export default async function handler(event) {
       `
     });
 
-    console.log('Email sent successfully:', result);
-
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, message: 'Email sent successfully' })
+      headers: corsHeaders,
+      body: JSON.stringify({ success: true, message: 'Email sent successfully', id: result?.id || null })
     };
   } catch (error) {
-    console.error('=== ERROR ===');
-    console.error('Error message:', error.message);
-    console.error('Error stack:', error.stack);
-    console.error('Full error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ 
-        error: error.message || 'Failed to send email', 
-        details: error.toString()
-      })
+      headers: corsHeaders,
+      body: JSON.stringify({ error: error?.message || 'Failed to send email' })
     };
   }
-}
+};
