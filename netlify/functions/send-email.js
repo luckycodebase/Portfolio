@@ -46,7 +46,7 @@ export default async function handler(event) {
     console.error('Resend error:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' })
+      body: JSON.stringify({ error: error.message || 'Failed to send email' })
     };
   }
 }

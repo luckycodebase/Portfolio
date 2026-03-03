@@ -51,8 +51,9 @@ const ContactPage = () => {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error(data.error || 'Failed to send email');
       }
 
       // Show success message
@@ -72,9 +73,10 @@ const ContactPage = () => {
         message: "",
       });
     } catch (error) {
+      console.error('Contact form error:', error);
       Swal.fire({
         title: 'Error!',
-        text: 'Something went wrong. Please try again later.',
+        text: error.message || 'Something went wrong. Please try again later.',
         icon: 'error',
         confirmButtonColor: '#6366f1'
       });
