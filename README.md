@@ -1,113 +1,150 @@
-# Portfolio V5  
-Hello everyone!  
-Let me introduce myself, Lucky. On this occasion, I’d like to share the portfolio website project that I’ve developed.  
+# Lucky Portfolio (React + Vite)
 
-**Tech Stack used:**  
-- ReactJS  
-- Tailwind CSS  
-- AOS  
-- Firebase  
-- Framer Motion  
-- Lucide  
-- Material UI  
-- SweetAlert2  
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Luckyraj9295%2FPortfolio-181717?logo=github)](https://github.com/Luckyraj9295/Portfolio)
+[![Last Commit](https://img.shields.io/github/last-commit/Luckyraj9295/Portfolio)](https://github.com/Luckyraj9295/Portfolio/commits/main)
+[![Top Language](https://img.shields.io/github/languages/top/Luckyraj9295/Portfolio)](https://github.com/Luckyraj9295/Portfolio)
+[![Stars](https://img.shields.io/github/stars/Luckyraj9295/Portfolio?style=social)](https://github.com/Luckyraj9295/Portfolio/stargazers)
+[![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?logo=netlify&logoColor=white)](https://thatsluckyy.netlify.app)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
 
-**Website Link:**  
-[https://www.eki.my.id/](https://www.eki.my.id/)  
+Modern personal portfolio website with project/certificate showcase, Firebase-powered comments, Cloudinary profile image upload, and a Netlify Function contact form powered by Resend.
 
-We would appreciate it if you decide to use this project. Please include credit when using it. Thank you! 🙏  
+## Features
 
----
+- Responsive portfolio UI built with React + Tailwind CSS
+- Project and certificate sections
+- Comment system using Firestore (with optional profile image upload)
+- Contact form that sends emails via Netlify Functions + Resend
+- AOS animations and polished UI components
 
-# Tutorial: Running the Project  
+## Tech Stack
 
-Here’s a simple guide to run this project.  
+- React 18
+- Vite 6
+- Tailwind CSS
+- Firebase (Firestore)
+- Cloudinary
+- Netlify Functions
+- Resend
+- SweetAlert2
+- Material UI / Lucide React
 
-## Prerequisites  
+## Project Structure
 
-Ensure that you have already installed:  
-- **Node.js**  
+```text
+src/
+  components/
+  data/
+  Pages/
+  firebase.js
+netlify/
+  functions/
+    send-email.js
+```
 
----
+## Prerequisites
 
-## Steps to Run the Project  
+- Node.js 18+ (recommended: 18.x)
+- npm
 
-1. **Download this project:**  
+## Getting Started
 
-   ```bash  
-   git clone https://github.com/EkiZR/Portofolio_V5.git  
-   ```  
+1. Clone repository
 
-2. **Install all dependencies:**  
+```bash
+git clone https://github.com/Luckyraj9295/Portfolio.git
+cd "Portofolio Update 2"
+```
 
-   ```bash  
-   npm install  
-   ```  
-   Or use:  
+2. Install dependencies
 
-   ```bash  
-   npm install --legacy-peer-deps  
-   ```  
+```bash
+npm install --legacy-peer-deps
+```
 
-3. **Run the project:**  
+3. Create local env file
 
-   ```bash  
-   npm run dev  
-   ```  
+```bash
+cp .env.example .env.local
+```
 
-4. **Open in browser:**  
+4. Fill all values in `.env.local`
 
-   Access the application through the link displayed in your terminal.  
+5. Run development server
 
----
+```bash
+npm run dev
+```
 
-## Creating a Production Build  
+6. Build for production
 
-To create a production-ready build:  
+```bash
+npm run build
+```
 
-1. Run the build command:  
+## Environment Variables
 
-   ```bash  
-   npm run build  
-   ```  
+Use these variables in `.env.local` and in Netlify environment settings:
 
-2. The build files will be saved in the `dist` folder. You can upload this folder to your hosting server.  
+```dotenv
+VITE_FIREBASE_API_KEY=your_key_here
+VITE_FIREBASE_AUTH_DOMAIN=your_domain_here
+VITE_FIREBASE_PROJECT_ID=your_project_id_here
+VITE_FIREBASE_STORAGE_BUCKET=your_bucket_here
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id_here
+VITE_FIREBASE_APP_ID=your_app_id_here
 
----
+VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_name_here
+RESEND_API_KEY=your_resend_key_here
+```
 
-## Notes  
+## Netlify Deployment
 
-If you encounter issues while running the project, ensure that:  
-- Node.js is correctly installed.  
-- You’re in the correct project directory.  
-- All dependencies are installed without errors.  
+This project is configured for Netlify using `netlify.toml`:
 
----
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Functions directory: `netlify/functions`
+- Build env flag: `NPM_FLAGS=--legacy-peer-deps`
 
-## Firebase Configuration  
+### Deploy steps
 
-To configure Firebase for this project, follow these steps:  
+1. Connect this GitHub repo to Netlify
+2. Add all environment variables in Netlify dashboard
+3. Trigger deploy
+4. Test contact form and comments on production URL
 
-1. **Add Firebase to the Project:**  
-   - Go to the [Firebase Console](https://console.firebase.google.com/).  
-   - Create a new project or use an existing one.  
+## Security Notes
 
-2. **Enable Firestore Database:**  
-   - Create a database.  
+- Never commit `.env`, `.env.local`, or API keys
+- Keep only placeholder values in `.env.example`
+- `dist/` and `.netlify/` are ignored to avoid committing build artifacts
 
-3. **Go to Project Settings:**  
-   - Click the settings icon.  
-   - Copy the Firebase configuration.  
+## Common Troubleshooting
 
-4. **Go to Rules:**  
-   - Set the rules to `true`.  
+### Contact form returns 500/502
 
-5. **Adjust the Collection Structure:**  
-   - Set up the collections as shown in the following images:  
+- Check Netlify Function logs (`send-email`)
+- Verify `RESEND_API_KEY` is set in Netlify
+- Confirm request body includes `name`, `email`, and `message`
 
-   ![Collection Structure Example 1](https://github.com/user-attachments/assets/38580122-08a4-4499-a8fd-0f253652a239)  
-   ![Collection Structure Example 2](https://github.com/user-attachments/assets/d563d7ad-f1ab-46ff-8185-640dcebd0363)  
+### Build issues with dependencies
 
-6. **Update `firebase.js` and `firebase-comment.js` Files:**  
-   - Replace the `firebaseConfig` content with your Firebase configuration.  
+Use:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+Then rebuild:
+
+```bash
+npm run build
+```
+
+## License
+
+This project is for personal portfolio use. Please keep attribution if you reuse substantial parts.
 
