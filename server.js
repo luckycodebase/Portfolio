@@ -1,3 +1,4 @@
+/* globals process */
 import express from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
