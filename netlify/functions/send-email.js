@@ -30,7 +30,7 @@ export const handler = async (event) => {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const result = await resend.emails.send({
+    const { data, error: resendError } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>',
       to: 'luckykumar9295@gmail.com',
       replyTo: email,
@@ -44,10 +44,20 @@ export const handler = async (event) => {
       `
     });
 
+    if (resendError) {
+      return {
+        statusCode: 500,
+        headers: corsHeaders,
+        body: JSON.stringify({
+          error: resendError.message || 'Resend rejected the email request'
+        })
+      };
+    }
+
     return {
       statusCode: 200,
       headers: corsHeaders,
-      body: JSON.stringify({ success: true, message: 'Email sent successfully', id: result?.id || null })
+      body: JSON.stringify({ success: true, message: 'Email sent successfully', id: data?.id || null })
     };
   } catch (error) {
     return {
