@@ -7,7 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const COMMENTS_COLLECTION = 'portfolio-comments';
-const CLOUDINARY_CLOUD_NAME = 'dq8oq3khb';
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = 'portfolio_comments';
 
 const HARDCODED_COMMENTS = [

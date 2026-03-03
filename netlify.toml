@@ -8,5 +8,4 @@
 
 [env]
   [env.production]
-    [env.production.context.production.environment]
-      RESEND_API_KEY = "re_Z1aMKqWU_GWr2sTz749kVJ1DXnKYEp69q"
+    RESEND_API_KEY = "placeholder"
