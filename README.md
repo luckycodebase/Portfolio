@@ -4,7 +4,7 @@
 [![Last Commit](https://img.shields.io/github/last-commit/Luckyraj9295/Portfolio)](https://github.com/Luckyraj9295/Portfolio/commits/main)
 [![Top Language](https://img.shields.io/github/languages/top/Luckyraj9295/Portfolio)](https://github.com/Luckyraj9295/Portfolio)
 [![Stars](https://img.shields.io/github/stars/Luckyraj9295/Portfolio?style=social)](https://github.com/Luckyraj9295/Portfolio/stargazers)
-[![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?logo=netlify&logoColor=white)](https://thatsluckyy.netlify.app)
+[![Netlify](https://img.shields.io/badge/Deployed%20on-Netlify-00C7B7?logo=netlify&logoColor=white)](https://www.thatsluckyy.netlify.com)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
 [![Firebase](https://img.shields.io/badge/Firebase-Firestore-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com)
