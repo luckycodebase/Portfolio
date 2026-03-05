@@ -48,13 +48,12 @@ const socialLinks = [
     displayName: "GeeksForGeeks",
     subText: "thatslucky",
     icon: () => (
-    <svg width="24px" height="24px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24px" height="24px" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <title>GeeksForGeeks</title>
-    <rect width="256" height="256" rx="30" fill="#2F8D46"/>
-    <path d="M78.5 128c-11.5 0-20.8 9.3-20.8 20.8v41.7c0 11.5 9.3 20.8 20.8 20.8s20.8-9.3 20.8-20.8v-41.7c0-11.5-9.3-20.8-20.8-20.8zm99 0c-11.5 0-20.8 9.3-20.8 20.8v41.7c0 11.5 9.3 20.8 20.8 20.8s20.8-9.3 20.8-20.8v-41.7c0-11.5-9.3-20.8-20.8-20.8z" fill="#FFF"/>
-    <circle cx="78.5" cy="85" r="12" fill="#FFF"/>
-    <circle cx="177.5" cy="85" r="12" fill="#FFF"/>
-    <path d="M128 103c-9.5 0-17.2 7.7-17.2 17.2v51.6c0 9.5 7.7 17.2 17.2 17.2s17.2-7.7 17.2-17.2v-51.6c0-9.5-7.7-17.2-17.2-17.2z" fill="#FFF"/>
+    <rect width="100" height="100" fill="#2F8D46"/>
+    <text x="50" y="40" fontFamily="Verdana, sans-serif" fontSize="18" fontWeight="bold" fill="#FFFFFF" textAnchor="middle">Geeks</text>
+    <text x="50" y="58" fontFamily="Verdana, sans-serif" fontSize="12" fontWeight="normal" fill="#FFFFFF" textAnchor="middle">for</text>
+    <text x="50" y="78" fontFamily="Verdana, sans-serif" fontSize="18" fontWeight="bold" fill="#FFFFFF" textAnchor="middle">Geeks</text>
 </svg>
     ),
     url: "https://www.geeksforgeeks.org/profile/thatslucky",
