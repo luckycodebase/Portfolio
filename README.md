@@ -11,6 +11,10 @@
 
 Modern personal portfolio website with project/certificate showcase, Firebase-powered comments, Cloudinary profile image upload, and a Netlify Function contact form powered by Resend.
 
+🌐 Live Application
+Link:
+https://bharat-yaatra.netlify.app
+
 ## Features
 
 - Responsive portfolio UI built with React + Tailwind CSS
