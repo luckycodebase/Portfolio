@@ -13,7 +13,7 @@ Modern personal portfolio website with project/certificate showcase, Firebase-po
 
 🌐 Live Application
 Link:
-https://bharat-yaatra.netlify.app
+https://thatsluckyy.netlify.app/
 
 ## Features
 
