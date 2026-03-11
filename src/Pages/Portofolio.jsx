@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import CardProject from "../components/CardProject";
 import CertificateCard from "../components/CertificateCard";
 import TechStackIcon from "../components/TechStackIcon";
+import InternshipSection from "../components/InternshipSection";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Code, Award, Boxes } from "lucide-react";
@@ -321,13 +322,18 @@ export default function FullWidthTabs() {
             />
             <Tab
               icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />}
-              label="Certificates"
+              label="Internships / Experience"
               {...a11yProps(1)}
+            />
+            <Tab
+              icon={<Award className="mb-2 w-5 h-5 transition-all duration-300" />}
+              label="Certificates"
+              {...a11yProps(2)}
             />
             <Tab
               icon={<Boxes className="mb-2 w-5 h-5 transition-all duration-300" />}
               label="Tech Stack"
-              {...a11yProps(2)}
+              {...a11yProps(3)}
             />
           </Tabs>
         </AppBar>
@@ -337,6 +343,7 @@ export default function FullWidthTabs() {
           index={value}
           onChangeIndex={setValue}
         >
+          {/* Projects Tab */}
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-5">
@@ -367,7 +374,15 @@ export default function FullWidthTabs() {
             )}
           </TabPanel>
 
+          {/* Internships Tab */}
           <TabPanel value={value} index={1} dir={theme.direction}>
+            <div className="w-full">
+              <InternshipSection />
+            </div>
+          </TabPanel>
+
+          {/* Certificates Tab */}
+          <TabPanel value={value} index={2} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-4">
                 {displayedCertificates.map((certificate, index) => (
@@ -397,7 +412,8 @@ export default function FullWidthTabs() {
             )}
           </TabPanel>
 
-          <TabPanel value={value} index={2} dir={theme.direction}>
+          {/* Tech Stack Tab */}
+          <TabPanel value={value} index={3} dir={theme.direction}>
             <div className="container mx-auto flex justify-center items-center overflow-hidden pb-[5%]">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-8 gap-5">
                 {techStacks.map((stack, index) => (
