@@ -184,7 +184,7 @@ const AboutPage = () => {
         label: "Certificates",
         description: "Professional skills validated",
         animation: "fade-up",
-        targetTab: 1,
+        targetTab: 2,
       },
       {
         icon: Globe,
@@ -193,7 +193,7 @@ const AboutPage = () => {
         label: "Year of Study",
         description: "B.tech Computer Science",
         animation: "fade-left",
-        targetTab: 2,
+        targetTab: 3,
       },
     ],
     [totalProjects, totalCertificates, YearExperience]

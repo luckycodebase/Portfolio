@@ -188,7 +188,7 @@ export default function FullWidthTabs() {
     const storedTab = localStorage.getItem("portfolioActiveTab");
     if (storedTab !== null) {
       const parsedTab = Number(storedTab);
-      if (!Number.isNaN(parsedTab) && parsedTab >= 0 && parsedTab <= 2) {
+      if (!Number.isNaN(parsedTab) && parsedTab >= 0 && parsedTab <= 3) {
         setValue(parsedTab);
       }
       localStorage.removeItem("portfolioActiveTab");
@@ -198,7 +198,7 @@ export default function FullWidthTabs() {
   useEffect(() => {
     const handlePortfolioTabChange = (event) => {
       const tab = event?.detail?.tab;
-      if (typeof tab === "number" && tab >= 0 && tab <= 2) {
+      if (typeof tab === "number" && tab >= 0 && tab <= 3) {
         setValue(tab);
       }
     };
