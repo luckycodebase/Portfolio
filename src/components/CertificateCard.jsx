@@ -33,7 +33,7 @@ const CertificateCard = ({ Img, Title, Issuer, CredentialUrl, id }) => {
           </div>
           
           <div className="mt-4 space-y-3">
-            <h3 className="text-lg font-semibold bg-gradient-to-r from-blue-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent">
+            <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent">
               {Title}
             </h3>
             
