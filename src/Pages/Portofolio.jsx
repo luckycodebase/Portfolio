@@ -276,11 +276,12 @@ export default function FullWidthTabs() {
             onChange={handleChange}
             textColor="secondary"
             indicatorColor="secondary"
-            variant="scrollable"
-            scrollButtons="auto"
+            variant={window.innerWidth < 600 ? "fullWidth" : "scrollable"}
+            scrollButtons={window.innerWidth < 600 ? false : "auto"}
             allowScrollButtonsMobile
             sx={{
               minHeight: { xs: "48px", md: "70px" },
+              width: '100%',
               "& .MuiTab-root": {
                 fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" },
                 fontWeight: 600,
@@ -289,9 +290,11 @@ export default function FullWidthTabs() {
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 padding: { xs: "10px 0", md: "20px 0" },
                 zIndex: 1,
-                margin: { xs: "4px", md: "8px" },
+                margin: { xs: "2px 0", md: "8px" },
                 borderRadius: "12px",
-                minWidth: 90,
+                minWidth: 0,
+                flex: 1,
+                justifyContent: 'center',
                 "&:hover": {
                   color: "#ffffff",
                   backgroundColor: "rgba(139, 92, 246, 0.1)",
@@ -313,7 +316,8 @@ export default function FullWidthTabs() {
                 height: 0,
               },
               "& .MuiTabs-flexContainer": {
-                gap: { xs: "2px", md: "8px" },
+                gap: { xs: 0, md: "8px" },
+                width: '100%',
               },
             }}
           >
