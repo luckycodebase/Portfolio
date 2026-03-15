@@ -37,7 +37,7 @@ const socialLinks = [
   {
     name: "GitHub",
     displayName: "Github",
-    subText: "Luckyraj9295",
+    subText: "luckycodebase",
     icon: Github,
     url: "https://github.com/luckycodebase",
     color: "#ffffff",
